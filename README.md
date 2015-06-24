@@ -12,7 +12,8 @@
 
 ### Slides
 
-[Download](.slides/1-basic-tools.pdf)
+- [PDF](.slides/1-basic-tools.pdf)
+- [Markdown](1-basic-tools/huawei-basic-tools.md)
 
 ## 2. Testing Framework
 

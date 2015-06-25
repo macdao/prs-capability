@@ -1,13 +1,13 @@
 package training
 
-import org.scalatest.path
+import org.scalatest.{Matchers, path}
 
-class StudentSpec extends path.FunSpec {
+class StudentSpec extends path.FunSpec with Matchers {
   describe("Student") {
     describe("in 3 5 7 game") {
       val fizzGame: FizzGame = new FizzGame(3, 5, 7)
       it("should say 1 for student 1") {
-        assert(new Student(fizzGame, 1).say() == "1")
+        new Student(fizzGame, 1).say() should equal("1")
       }
 
       it("should say Fizz for student 3") {

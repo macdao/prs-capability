@@ -15,7 +15,7 @@
 - [PDF](.slides/huawei-basic-tools.pdf)
 - [Markdown](.slides/huawei-basic-tools.md)
 
-## 2. Testing Framework
+## [2. Testing Framework](2-testing-framework)
 
 ### Agenda
 

@@ -25,6 +25,6 @@
 
 ### Slides
 
-- [PDF](.slides/testing-framework.pdf)
-- [Markdown](.slides/testing-framework.md)
+- [PDF](.slides/huawei-testing-framework.pdf)
+- [Markdown](.slides/huawei-testing-framework.md)
 

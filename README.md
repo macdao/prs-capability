@@ -12,14 +12,19 @@
 
 ### Slides
 
-- [PDF](.slides/1-basic-tools.pdf)
-- [Markdown](1-basic-tools/huawei-basic-tools.md)
+- [PDF](.slides/huawei-basic-tools.pdf)
+- [Markdown](.slides/huawei-basic-tools.md)
 
-## 2. Testing Framework
+## [2. Testing Framework](2-testing-framework)
 
 ### Agenda
 
 - 介绍JUnit、ScalaTest等工具的基本使用
 - 掌握JUnit、ScalaTest的基本使用
 - 练习设计和编写单元测试用例
+
+### Slides
+
+- [PDF](.slides/huawei-testing-framework.pdf)
+- [Markdown](.slides/huawei-testing-framework.md)
 

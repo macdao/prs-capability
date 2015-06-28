@@ -1,33 +1,27 @@
 package training;
 
+import com.google.common.base.Optional;
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
 public class Student {
-    private final FizzGame fizzGame;
+    private List<GameRule> rules;
     private final int index;
 
     public Student(FizzGame fizzGame, int index) {
-        this.fizzGame = fizzGame;
+        this.rules = Lists.newArrayList(new MultipleGameRule(fizzGame), new DefaultGameRule());
         this.index = index;
     }
 
     public String say() {
-        final StringBuilder sb = new StringBuilder();
-
-        if (index % fizzGame.getNumber1() == 0) {
-            sb.append("Fizz");
+        for (GameRule rule : rules) {
+            final Optional<String> result = rule.say(index);
+            if (result.isPresent()) {
+                return result.get();
+            }
         }
 
-        if (index % fizzGame.getNumber2() == 0) {
-            sb.append("Buzz");
-        }
-
-        if (index % fizzGame.getNumber3() == 0) {
-            sb.append("Whizz");
-        }
-
-        if (sb.length() != 0) {
-            return sb.toString();
-        }
-
-        return String.valueOf(index);
+        throw new IllegalStateException();
     }
 }

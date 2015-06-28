@@ -1,7 +1,6 @@
 package training;
 
 import com.google.common.base.Optional;
-import com.google.common.collect.Lists;
 
 import java.util.List;
 
@@ -9,8 +8,8 @@ public class Student {
     private List<GameRule> rules;
     private final int index;
 
-    public Student(FizzGame fizzGame, int index) {
-        this.rules = Lists.newArrayList(new MultipleGameRule(fizzGame), new DefaultGameRule());
+    public Student(List<GameRule> rules, int index) {
+        this.rules = rules;
         this.index = index;
     }
 

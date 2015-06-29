@@ -1,8 +1,9 @@
 package training;
 
+
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class FizzGame {
     private final int number1;
@@ -29,7 +30,7 @@ public class FizzGame {
 
     public static void main(String[] args) {
         final FizzGame fizzGame = new FizzGame(3, 5, 7);
-        final ArrayList<GameRule> rules = Lists.newArrayList(new MultipleGameRule(fizzGame), new DefaultGameRule());
+        final List<GameRule> rules = Lists.newArrayList(new MultipleGameRule(fizzGame), new DefaultGameRule());
         for (int i = 1; i <= 100; i++) {
             System.out.println(new Student(rules, i).say());
         }

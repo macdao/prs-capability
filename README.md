@@ -28,3 +28,16 @@
 - [PDF](.slides/huawei-testing-framework.pdf)
 - [Markdown](.slides/huawei-testing-framework.md)
 
+## [3. Mock](3-mock)
+
+### Agenda
+
+- 介绍依赖解耦、控制反转、简单设计、SUT、Test Double等概念
+- 介绍OCP、DIP等设计原则
+- 介绍分解任务
+- 介绍Mock的概念和使用
+- 掌握Mock测试的编写
+
+### Slides
+
+- [Markdown](.slides/huawei-mock.md)

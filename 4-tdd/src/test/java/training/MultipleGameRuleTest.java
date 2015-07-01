@@ -12,7 +12,7 @@ public class MultipleGameRuleTest {
 
     @Before
     public void setUp() throws Exception {
-        multipleGameRule = new MultipleGameRule(new FizzGame(3, 5, 7));
+        multipleGameRule = new MultipleGameRule(new GameInput(3, 5, 7));
     }
 
     @Test

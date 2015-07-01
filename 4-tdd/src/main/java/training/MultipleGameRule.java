@@ -4,25 +4,25 @@ import com.google.common.base.Optional;
 
 public class MultipleGameRule implements GameRule {
 
-    private FizzGame fizzGame;
+    private GameInput gameInput;
 
-    public MultipleGameRule(FizzGame fizzGame) {
-        this.fizzGame = fizzGame;
+    public MultipleGameRule(GameInput gameInput) {
+        this.gameInput = gameInput;
     }
 
     @Override
     public Optional<String> say(int index) {
         final StringBuilder sb = new StringBuilder();
 
-        if (index % fizzGame.getNumber1() == 0) {
+        if (index % gameInput.getNumber1() == 0) {
             sb.append("Fizz");
         }
 
-        if (index % fizzGame.getNumber2() == 0) {
+        if (index % gameInput.getNumber2() == 0) {
             sb.append("Buzz");
         }
 
-        if (index % fizzGame.getNumber3() == 0) {
+        if (index % gameInput.getNumber3() == 0) {
             sb.append("Whizz");
         }
 

@@ -40,4 +40,5 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-mock.pdf)
 - [Markdown](.slides/huawei-mock.md)

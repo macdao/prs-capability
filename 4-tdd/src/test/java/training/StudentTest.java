@@ -1,29 +1,54 @@
 package training;
 
-import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
 
 public class StudentTest {
-    @Test
-    public void say_fizz_when_first_rule_return_fizz() throws Exception {
-        final GameRule rule1 = when(mock(GameRule.class).say(anyInt())).thenReturn(Optional.of("Fizz")).getMock();
-        final GameRule rule2 = when(mock(GameRule.class).say(anyInt())).thenReturn(Optional.<String>absent()).getMock();
-        final Student student = new Student(Lists.newArrayList(rule1, rule2), 1);
+    private List<GameRule> rules;
 
-        assertThat(student.say(), is("Fizz"));
+    @Before
+    public void setUp() {
+        rules = Lists.newArrayList(new MultipleGameRule(new FizzGame(3, 5, 7)), new DefaultGameRule());
     }
 
     @Test
-    public void say_buzz_when_first_rule_return_nothing_and_second_rule_return_buzz() throws Exception {
-        final GameRule rule1 = when(mock(GameRule.class).say(anyInt())).thenReturn(Optional.<String>absent()).getMock();
-        final GameRule rule2 = when(mock(GameRule.class).say(anyInt())).thenReturn(Optional.of("Buzz")).getMock();
-        final Student student = new Student(Lists.newArrayList(rule1, rule2), 1);
+    public void test_student1_say_1() throws Exception {
+        assertThat(new Student(rules, 1).say(), is("1"));
+    }
 
-        assertThat(student.say(), is("Buzz"));
+    @Test
+    public void test_student3_say_Fizz() throws Exception {
+        assertThat(new Student(rules, 3).say(), is("Fizz"));
+    }
+
+    @Test
+    public void test_student5_say_Buzz() throws Exception {
+        assertThat(new Student(rules, 5).say(), is("Buzz"));
+    }
+
+    @Test
+    public void test_student7_say_Whizz() throws Exception {
+        assertThat(new Student(rules, 7).say(), is("Whizz"));
+    }
+
+    @Test
+    public void test_student15_say_FizzBuzz() throws Exception {
+        assertThat(new Student(rules, 15).say(), is("FizzBuzz"));
+    }
+
+    @Test
+    public void test_student21_say_FizzWhizz() throws Exception {
+        assertThat(new Student(rules, 21).say(), is("FizzWhizz"));
+    }
+
+    @Test
+    public void test_student105_say_FizzBuzzWhizz() throws Exception {
+        assertThat(new Student(rules, 105).say(), is("FizzBuzzWhizz"));
     }
 }

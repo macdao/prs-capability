@@ -8,7 +8,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class FizzGameTest {
+public class FizzGameMainTest {
 
     private String[] result;
     @Rule
@@ -16,7 +16,7 @@ public class FizzGameTest {
 
     @Before
     public void setUp() {
-        FizzGame.main(new String[0]);
+        FizzGameMain.main(new String[0]);
         result = systemOutRule.getLog().split(System.lineSeparator());
     }
 

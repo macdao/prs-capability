@@ -12,7 +12,7 @@ public class FizzGameMainTest {
 
     private String[] result;
     @Rule
-    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog().mute();
 
     @Before
     public void setUp() {
@@ -53,5 +53,10 @@ public class FizzGameMainTest {
     @Test
     public void test_student21_say_FizzWhizz() throws Exception {
         assertThat(result[21 - 1], is("FizzWhizz"));
+    }
+
+    @Test
+    public void test_student13_say_Fizz() throws Exception {
+        assertThat(result[13 - 1], is("Fizz"));
     }
 }

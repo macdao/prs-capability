@@ -41,6 +41,27 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
       it("student 21 should say FizzWhizz") {
         result(21 - 1) shouldBe "FizzWhizz"
       }
+
+      it("student 13 should say Fizz") {
+        result(13 - 1) shouldBe "Fizz"
+      }
+    }
+
+    describe("when input 4 5 6") {
+      FizzGameMain.main(Array("4", "5", "6"))
+      val result: Array[String] = outputStream.toString.split(System.lineSeparator())
+
+      it("student 4 should say Fizz") {
+        result(4 - 1) shouldBe "Fizz"
+      }
+    }
+
+    describe("when input 3 5") {
+      it("should throw RuntimeException") {
+        intercept[RuntimeException] {
+          FizzGameMain.main(Array("3", "5"))
+        }
+      }
     }
 
     System.setOut(originalOut)

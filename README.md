@@ -54,4 +54,17 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-tdd.pdf)
 - [Markdown](.slides/huawei-tdd.md)
+
+## 5. RESTful APIs
+
+### Agenda
+
+- 介绍REST、Richardson成熟度模型
+- 介绍若干RESTful APIs例子
+- 练习编写RESTful APIs
+
+### Slides
+
+- [Markdown](.slides/huawei-restful-apis.md)

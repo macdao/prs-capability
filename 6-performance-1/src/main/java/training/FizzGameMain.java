@@ -18,7 +18,7 @@ public class FizzGameMain {
         final GameInput gameInput = new GameInput(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
         final List<GameRule> rules = newArrayList(new ContainGameRule(gameInput), new MultipleGameRule(gameInput), new DefaultGameRule());
         for (int i = 1; i <= 100; i++) {
-            System.out.println(new Student(rules, i).say());
+            System.out.println(new CompositeGameRule(rules).say(i).get());
         }
     }
 

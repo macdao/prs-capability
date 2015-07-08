@@ -4,23 +4,21 @@ import com.google.common.base.Optional;
 
 import java.util.List;
 
-public class Student {
+public class CompositeGameRule implements GameRule {
     private List<GameRule> rules;
-    private final int index;
 
-    public Student(List<GameRule> rules, int index) {
+    public CompositeGameRule(List<GameRule> rules) {
         this.rules = rules;
-        this.index = index;
     }
 
-    public String say() {
+    public Optional<String> say(int index) {
         for (GameRule rule : rules) {
             final Optional<String> result = rule.say(index);
             if (result.isPresent()) {
-                return result.get();
+                return result;
             }
         }
 
-        throw new IllegalStateException();
+        return Optional.absent();
     }
 }

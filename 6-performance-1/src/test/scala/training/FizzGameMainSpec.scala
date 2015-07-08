@@ -10,36 +10,45 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
     val originalOut: PrintStream = System.out
     System.setOut(new PrintStream(outputStream))
 
+    lazy val result: Array[String] = outputStream.toString.split(System.lineSeparator())
+
+    def student(index: Int) = {
+      result(index - 1)
+    }
+
     describe("when input 3 5 7") {
       FizzGameMain.main(Array("3", "5", "7"))
-      val result: Array[String] = outputStream.toString.split(System.lineSeparator())
 
       it("students should say 100 lines") {
         result.length shouldBe 100
       }
 
       it("student 1 should say 1") {
-        result(0) shouldBe "1"
+        student(1) shouldBe "1"
       }
 
       it("student 3 should say Fizz") {
-        result(3 - 1) shouldBe "Fizz"
+        student(3) shouldBe "Fizz"
       }
 
       it("student 5 should say Buzz") {
-        result(5 - 1) shouldBe "Buzz"
+        student(5) shouldBe "Buzz"
       }
 
       it("student 7 should say Whizz") {
-        result(7 - 1) shouldBe "Whizz"
+        student(7) shouldBe "Whizz"
       }
 
       it("student 15 should say FizzBuzz") {
-        result(15 - 1) shouldBe "FizzBuzz"
+        student(15) shouldBe "FizzBuzz"
       }
 
       it("student 21 should say FizzWhizz") {
-        result(21 - 1) shouldBe "FizzWhizz"
+        student(21) shouldBe "FizzWhizz"
+      }
+
+      it("student 13 should say Fizz") {
+        student(13) shouldBe "Fizz"
       }
     }
 

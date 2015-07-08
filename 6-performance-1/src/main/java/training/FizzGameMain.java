@@ -2,8 +2,8 @@ package training;
 
 import com.google.common.base.Predicate;
 
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.util.List;
 
 import static com.google.common.collect.Iterables.any;
@@ -21,14 +21,23 @@ public class FizzGameMain {
         final GameInput gameInput = new GameInput(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
         final List<GameRule> rules = newArrayList(new ContainGameRule(gameInput), new MultipleGameRule(gameInput), new DefaultGameRule());
 
-        PrintStream out;
+        Writer fileWriter = null;
         if (args.length == 4) {
-            out = new PrintStream(new FileOutputStream(args[3]));
-        } else {
-            out = System.out;
+            fileWriter = new FileWriter(args[3]);
         }
+
         for (int i = 1; i <= 100; i++) {
-            out.println(new CompositeGameRule(rules).say(i).get());
+            final String say = new CompositeGameRule(rules).say(i).get();
+            if (args.length == 4) {
+                fileWriter.write(say);
+                fileWriter.write(System.lineSeparator());
+            } else {
+                System.out.println(say);
+            }
+        }
+
+        if (fileWriter != null) {
+            fileWriter.close();
         }
     }
 

@@ -42,3 +42,29 @@
 
 - [PDF](.slides/huawei-mock.pdf)
 - [Markdown](.slides/huawei-mock.md)
+
+## [4. TDD](4-tdd)
+
+### Agenda
+
+- 介绍TDD、BDD、ATDD、测试金字塔、单元测试的限制
+- 介绍Composite Pattern
+- 掌握TDD、BDD、ATDD，设计测试用例
+- 掌握Composite Pattern重构
+
+### Slides
+
+- [PDF](.slides/huawei-tdd.pdf)
+- [Markdown](.slides/huawei-tdd.md)
+
+## [5. RESTful APIs](5-restful-apis)
+
+### Agenda
+
+- 介绍REST、Richardson成熟度模型
+- 介绍若干RESTful APIs例子
+- 练习编写RESTful APIs
+
+### Slides
+
+- [Markdown](.slides/huawei-restful-apis.md)

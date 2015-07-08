@@ -52,6 +52,14 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
       }
     }
 
+    describe("when input 4 5 6") {
+      FizzGameMain.main(Array("4", "5", "6"))
+
+      it("student 4 should say Fizz") {
+        student(4) shouldBe "Fizz"
+      }
+    }
+
     System.setOut(originalOut)
   }
 }

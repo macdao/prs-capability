@@ -68,3 +68,15 @@
 ### Slides
 
 - [Markdown](.slides/huawei-restful-apis.md)
+
+## [5. Performance 1](6-performance-1)
+
+### Agenda
+
+- 介绍性能测试、监控、分析、调优等基本概念
+- 通过对CPU、热点函数等方法优化性能
+- 练习JMC的使用
+
+### Slides
+
+- [Markdown](.slides/huawei-performance-1.md)

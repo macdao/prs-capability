@@ -1,13 +1,14 @@
 package training;
 
-import java.nio.file.Files;
+import java.io.File;
 
 public class FizzGameMainPerformanceTest {
 
     public static void main(String[] args) throws Exception {
         for (int i = 0; i < 100 * 1000; i++) {
-            final String fileName = Files.createTempFile("fizz-game-test-", ".txt").toString();
-            FizzGameMain.main(new String[]{"3", "5", "7", fileName});
+            final File tempFile = File.createTempFile("fizz-game-test-", ".txt");
+            FizzGameMain.main(new String[]{"3", "5", "7", tempFile.getAbsolutePath()});
+            tempFile.delete();
         }
     }
 }

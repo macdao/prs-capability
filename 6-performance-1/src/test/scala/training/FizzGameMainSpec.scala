@@ -1,7 +1,6 @@
 package training
 
-import java.io.{BufferedReader, FileReader, ByteArrayOutputStream, PrintStream}
-import java.nio.file.Files
+import java.io._
 
 import org.scalatest.{Matchers, path}
 
@@ -62,8 +61,8 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
     }
 
     describe("when input 3 5 7 and a fileName") {
-      val fileName = Files.createTempFile("fizz-game-test-", ".txt").toString
-      FizzGameMain.main(Array[String]("3", "5", "7", fileName))
+      val tempFile = File.createTempFile("fizz-game-test-", ".txt")
+      FizzGameMain.main(Array[String]("3", "5", "7", tempFile.getAbsolutePath))
 
       it("should not write to System.out") {
         result.length shouldBe 1
@@ -71,10 +70,11 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
       }
 
       it("should write to file") {
-        Console.println(fileName)
-        val reader = new BufferedReader(new FileReader(fileName))
+        val reader = new BufferedReader(new FileReader(tempFile))
         reader.readLine() shouldBe "1"
       }
+
+      tempFile.delete()
     }
 
     System.setOut(originalOut)

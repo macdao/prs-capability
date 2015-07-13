@@ -5,6 +5,8 @@ import com.google.common.base.Predicate;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.google.common.collect.Iterables.any;
@@ -14,6 +16,8 @@ import static java.util.Arrays.asList;
 import static java.util.Arrays.copyOf;
 
 public class FizzGameMain {
+    public static List<GameRule> rules = Collections.synchronizedList(new ArrayList<GameRule>());
+
     public static void main(String[] args) throws Exception {
         if (isInvalidLength(args) || isInvalidSpecialNumber(args)) {
             System.err.println("invalid input");
@@ -28,7 +32,9 @@ public class FizzGameMain {
         }
 
         for (int i = 1; i <= 100; i++) {
-            final String say = new CompositeGameRule(rules).say(i).get();
+            final CompositeGameRule compositeGameRule = new CompositeGameRule(rules);
+            FizzGameMain.rules.add(compositeGameRule);
+            final String say = compositeGameRule.say(i).get();
             if (args.length == 4) {
                 fileWriter.write(say);
                 fileWriter.write(System.lineSeparator());

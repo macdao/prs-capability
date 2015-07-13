@@ -36,7 +36,7 @@ public class MultipleGameRule implements GameRule {
         return Optional.absent();
     }
 
-    public static final Map<String, Optional<String>> cache = new ConcurrentHashMap<>();
+    private static final Map<String, Optional<String>> cache = new ConcurrentHashMap<>();
 
     private Optional<String> getOf(String sb) {
         if (cache.containsKey(sb)) {

@@ -138,7 +138,7 @@ HTTP/1.1 200 OK
 > 在为HTTP/1.1和URI的新标准设计扩展时，我认识到需要建立一个关于万维网应该如何运转的模型。这个关于整个Web应用中的交互的理想化的模型被称作表述性状态转移(REST)架构风格，成为了现代Web架构的基础。
 
 
-> 这个名称“表述性状态转移”是有意唤起人们对于一个良好设计的Web应用如何运转的印象：一个由网页组成的网络（一个虚拟的状态机），用户通过选择链接（状态转移）在应用中前进，导致下一个页面（代表应用的下一个状态）被转移给用户，并且呈现给他们，以便他们来使用。
+> 这个名称“表述性状态转移”是有意唤起人们对于一个良好设计的Web应用如何运转的印象：一个由网页组成的网络（一个虚拟的状态机），用户通过选择链接（状态迁移）在应用中前进，导致下一个页面（展现应用的下一个状态）被转移给用户，并且呈现给他们，以便他们来使用。
 
 
 ### REST架构约束
@@ -723,6 +723,7 @@ Content-Type: application/json+userdb
 
 - 实现以下功能：
 
+ - 可以显示游戏列表
  - 可以创建一个游戏，创建时指定三个特殊数
 
 - 包括内容：
@@ -745,12 +746,12 @@ Content-Type: application/vnd.qixi.fizz+json
 {
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "list",
       "method": "GET"
     },
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "create",
       "method": "POST"
     }
@@ -760,7 +761,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-GET /fizz-game
+GET /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 ```
 
@@ -769,18 +770,18 @@ Accpect: application/vnd.qixi.fizz+json
 Content-Type: application/vnd.qixi.fizz+json
 
 {
-  "games": [
+  "fizzGames": [
     {
       "id": 1,
       "specialNumbers": [3, 5, 7],
       "links": [
         {
-          "href": "/fizz-game/1",
+          "href": "/fizz-games/1",
           "rel": "self",
           "method": "GET"
         },
         {
-          "href": "/fizz-game/1",
+          "href": "/fizz-games/1",
           "rel": "delete",
           "method": "DELETE"
         }
@@ -789,12 +790,12 @@ Content-Type: application/vnd.qixi.fizz+json
   ],
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "self",
       "method": "GET"
     },
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "create",
       "method": "POST"
     }
@@ -804,7 +805,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-POST /fizz-game
+POST /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 
 {
@@ -815,19 +816,20 @@ Accpect: application/vnd.qixi.fizz+json
 ```
 201 Created
 Content-Type: application/vnd.qixi.fizz+json
+Location: /fizz-games/2
 
 {
-  "game": {
+  "fizzGame": {
     "id": 2,
     "specialNumbers": [4, 5, 6],
     "links": [
       {
-        "href": "/fizz-game/2",
+        "href": "/fizz-games/2",
         "rel": "self",
         "method": "GET"
       },
       {
-        "href": "/fizz-game/2",
+        "href": "/fizz-games/2",
         "rel": "delete",
         "method": "DELETE"
       }
@@ -835,7 +837,7 @@ Content-Type: application/vnd.qixi.fizz+json
   },
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "list",
       "method": "GET"
     },
@@ -845,7 +847,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-POST /fizz-game
+POST /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 
 {
@@ -870,6 +872,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 - 实现以下功能：
 
+ - 可以显示游戏列表
  - 可以创建一个游戏，创建时指定三个特殊数
  - 在游戏中，可以查看某个学生应该说的话
  - 在游戏中，可以验证某个学生应否应该说Fizz

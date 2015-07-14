@@ -68,3 +68,26 @@
 ### Slides
 
 - [Markdown](.slides/huawei-restful-apis.md)
+
+## [6. Performance 1](6-performance-1)
+
+### Agenda
+
+- 介绍性能测试、监控、分析、调优等基本概念
+- 通过对CPU、热点函数等方法优化性能
+- 练习JMC的使用
+
+### Slides
+
+- [Markdown](.slides/huawei-performance-1.md)
+
+## [7. Performance 2](7-performance-2)
+
+### Agenda
+
+- 介绍HotSpot VM基本架构、内存布局、性能调优方法
+- 练习利用JMC内存分析功能，调优应用程序和JVM性能
+
+### Slides
+
+- [Markdown](.slides/huawei-performance-2.md)

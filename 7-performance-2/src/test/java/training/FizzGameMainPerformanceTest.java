@@ -13,8 +13,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class FizzGameMainPerformanceTest {
 
-    private static final int count = 500 * 1000;
-    private static final int threads = 8;
+    private static final int count = 30 * 1000;
+    private static final int threads = 4;
     private static final Training training = new Training();
     private static final AtomicInteger throughput = new AtomicInteger();
     private static final AtomicLong throughputBegin = new AtomicLong();
@@ -22,14 +22,18 @@ public class FizzGameMainPerformanceTest {
     public static void main(String[] args) throws Exception {
         registerMBean();
 
+        LongLiveObject longLiveObject = new LongLiveObject();
+        longLiveObject.start();
+
         warmUp();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             final long start = System.currentTimeMillis();
             runMain(count, threads);
             System.out.println(System.currentTimeMillis() - start);
         }
 
+        longLiveObject.stop();
         System.out.println(FizzGameMain.rules.size());
     }
 
@@ -41,7 +45,7 @@ public class FizzGameMainPerformanceTest {
     }
 
     private static void warmUp() throws InterruptedException {
-        runMain(20 * 1000, threads);
+        runMain(10 * 1000, threads);
     }
 
     private static void runMain(final int count, int threads) throws InterruptedException {
@@ -63,6 +67,7 @@ public class FizzGameMainPerformanceTest {
                         tempFile.delete();
                         if ((finished.incrementAndGet()) * 100 % count == 0) {
                             System.out.print("\r" + finished.get() * 100 / count + "%");
+                            System.out.flush();
                         }
 
                         throughput.incrementAndGet();

@@ -15,35 +15,41 @@ public class MultipleGameRule implements GameRule {
 
     @Override
     public Optional<String> say(int index) {
-        final StringBuilder sb = new StringBuilder();
+//        final StringBuilder sb = new StringBuilder();
+        int i = 0;
 
         if (index % gameInput.getNumber1() == 0) {
-            sb.append("Fizz");
+            i = i | 0b1;
         }
 
         if (index % gameInput.getNumber2() == 0) {
-            sb.append("Buzz");
+            i = i | 0b10;
         }
 
         if (index % gameInput.getNumber3() == 0) {
-            sb.append("Whizz");
+            i = i | 0b100;
         }
 
-        if (sb.length() != 0) {
-            return getOf(sb.toString());
+        if (i != 0) {
+            return getOf(i);
         }
 
         return Optional.absent();
     }
 
-    private static final Map<String, Optional<String>> cache = new ConcurrentHashMap<>();
+    private static final Optional<String>[] cache = new Optional[8];
 
-    private Optional<String> getOf(String sb) {
-        if (cache.containsKey(sb)) {
-            return cache.get(sb);
-        }
-        final Optional<String> of = Optional.of(sb);
-        cache.put(sb, of);
-        return of;
+    static {
+        cache[0b1] = Optional.of("Fizz");
+        cache[0b10] = Optional.of("Buzz");
+        cache[0b100] = Optional.of("Whizz");
+        cache[0b11] = Optional.of("FizzBuzz");
+        cache[0b101] = Optional.of("FizzWhizz");
+        cache[0b110] = Optional.of("BuzzWhizz");
+        cache[0b111] = Optional.of("FizzBuzzWhizz");
+    }
+
+    private Optional<String> getOf(int sb) {
+        return cache[sb];
     }
 }

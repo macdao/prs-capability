@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class FizzGameMainPerformanceTest {
 
-    private static final int count = 50 * 1000;
+    private static final int count = 30 * 1000;
     private static final int threads = 4;
     private static final Training training = new Training();
     private static final AtomicInteger throughput = new AtomicInteger();
@@ -22,14 +22,18 @@ public class FizzGameMainPerformanceTest {
     public static void main(String[] args) throws Exception {
         registerMBean();
 
+        LongLiveObject longLiveObject = new LongLiveObject();
+        longLiveObject.start();
+
         warmUp();
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             final long start = System.currentTimeMillis();
             runMain(count, threads);
             System.out.println(System.currentTimeMillis() - start);
         }
 
+        longLiveObject.stop();
         System.out.println(FizzGameMain.rules.size());
     }
 

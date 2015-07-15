@@ -67,6 +67,7 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-restful-apis.pdf)
 - [Markdown](.slides/huawei-restful-apis.md)
 
 ## [6. Performance 1](6-performance-1)
@@ -79,6 +80,7 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-performance-1.pdf)
 - [Markdown](.slides/huawei-performance-1.md)
 
 ## [7. Performance 2](7-performance-2)
@@ -90,4 +92,5 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-performance-2.pdf)
 - [Markdown](.slides/huawei-performance-2.md)

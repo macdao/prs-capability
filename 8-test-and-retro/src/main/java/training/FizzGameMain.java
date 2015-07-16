@@ -27,7 +27,7 @@ public class FizzGameMain {
 
         Writer fileWriter = null;
         if (args.length == 4) {
-            fileWriter = new BufferedWriter(new FileWriter(args[3]));
+            fileWriter = new BufferedWriter(new FileWriter(args[3]), 500);
         }
 
         for (int i = 1; i <= 100; i++) {

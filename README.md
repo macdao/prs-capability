@@ -91,3 +91,15 @@
 ### Slides
 
 - [Markdown](.slides/huawei-performance-2.md)
+
+
+## [8. Test and Retro](8-test-and-retro)
+
+### Agenda
+
+- 课堂测试
+- 回顾
+
+### Slides
+
+- [Markdown](.slides/huawei-test-and-retro.md)

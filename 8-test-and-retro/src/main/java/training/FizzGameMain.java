@@ -5,8 +5,6 @@ import com.google.common.base.Predicate;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.google.common.collect.Iterables.any;
@@ -23,7 +21,7 @@ public class FizzGameMain {
             System.exit(1);
         }
         final GameInput gameInput = new GameInput(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
-        final List<GameRule> rules = newArrayList(new ContainGameRule(gameInput), new MultipleGameRule(gameInput), new DefaultGameRule());
+        final List<GameRule> rules = newArrayList(new ContainGameRule(gameInput), new MultipleGameRule(gameInput));
 
         Writer fileWriter = null;
         if (args.length == 4) {
@@ -31,7 +29,7 @@ public class FizzGameMain {
         }
 
         for (int i = 1; i <= 100; i++) {
-            final CompositeGameRule compositeGameRule = new CompositeGameRule(rules);
+            final CompositeGameRule compositeGameRule = new CompositeGameRule(rules, new DefaultGameRule());
             final String say = compositeGameRule.say(i).get();
             if (args.length == 4) {
                 fileWriter.write(say);

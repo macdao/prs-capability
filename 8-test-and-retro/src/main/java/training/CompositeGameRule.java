@@ -6,19 +6,24 @@ import java.util.List;
 
 public class CompositeGameRule implements GameRule {
     private List<GameRule> rules;
+    private GameRule defaultGameRule;
 
-    public CompositeGameRule(List<GameRule> rules) {
+    public CompositeGameRule(List<GameRule> rules, GameRule defaultGameRule) {
         this.rules = rules;
+        this.defaultGameRule = defaultGameRule;
     }
 
     public Optional<String> say(int index) {
+        final StringBuilder result = new StringBuilder();
         for (GameRule rule : rules) {
-            final Optional<String> result = rule.say(index);
-            if (result.isPresent()) {
-                return result;
-            }
+            final Optional<String> say = rule.say(index);
+            result.append(say.or(""));
         }
 
-        return Optional.absent();
+        if (result.length() != 0) {
+            return Optional.of(result.toString());
+        }
+
+        return defaultGameRule.say(index);
     }
 }

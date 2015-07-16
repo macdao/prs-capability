@@ -27,8 +27,8 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
         student(1) shouldBe "1"
       }
 
-      it("student 3 should say Fizz") {
-        student(3) shouldBe "Fizz"
+      it("student 3 should say FizzFizz") {
+        student(3) shouldBe "FizzFizz"
       }
 
       it("student 5 should say Buzz") {
@@ -159,8 +159,8 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
     describe("when input 4 5 6") {
       FizzGameMain.main(Array("4", "5", "6"))
 
-      it("student 4 should say Fizz") {
-        student(4) shouldBe "Fizz"
+      it("student 4 should say FizzFizz") {
+        student(4) shouldBe "FizzFizz"
       }
     }
 

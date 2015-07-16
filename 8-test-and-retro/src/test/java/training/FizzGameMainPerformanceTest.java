@@ -1,6 +1,6 @@
 package training;
 
-import training.mbean.Training;
+import training.mbean.Monitor;
 
 import javax.management.*;
 import java.io.File;
@@ -15,7 +15,7 @@ public class FizzGameMainPerformanceTest {
 
     private static final int count = 30 * 1000;
     private static final int threads = 4;
-    private static final Training training = new Training();
+    private static final Monitor MONITOR = new Monitor();
     private static final AtomicInteger throughput = new AtomicInteger();
     private static final AtomicLong throughputBegin = new AtomicLong();
 
@@ -34,13 +34,12 @@ public class FizzGameMainPerformanceTest {
         }
 
         longLiveObject.stop();
-        System.out.println(FizzGameMain.rules.size());
     }
 
     private static void registerMBean() throws MalformedObjectNameException, InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException {
-        final ObjectName objectName = new ObjectName("training:type=Training");
+        final ObjectName objectName = new ObjectName("monitor:type=Monitor");
         if (!ManagementFactory.getPlatformMBeanServer().isRegistered(objectName)) {
-            ManagementFactory.getPlatformMBeanServer().registerMBean(training, objectName);
+            ManagementFactory.getPlatformMBeanServer().registerMBean(MONITOR, objectName);
         }
     }
 
@@ -54,7 +53,7 @@ public class FizzGameMainPerformanceTest {
         final AtomicInteger finished = new AtomicInteger();
         throughputBegin.set(System.currentTimeMillis());
         for (int i = 0; i < count; i++) {
-            training.setRunning(i - finished.get());
+            MONITOR.setRunning(i - finished.get());
             while (i - finished.get() > 10 * 1000) {
                 Thread.sleep(1000);
             }
@@ -74,7 +73,7 @@ public class FizzGameMainPerformanceTest {
                         final long now = System.currentTimeMillis();
                         if (now - throughputBegin.get() > 1000) {
                             throughputBegin.set(now);
-                            training.setThroughput(throughput.getAndSet(0));
+                            MONITOR.setThroughput(throughput.getAndSet(0));
                         }
 
                     } catch (Exception e) {

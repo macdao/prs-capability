@@ -22,8 +22,9 @@
 - 通过`all student should say correctly`测试
 - Tasking
 - 小步提交
-- Merge Request
 - ATDD
+- 性能优化
+- Merge Request
 
 
 

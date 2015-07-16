@@ -1,0 +1,5 @@
+[repositories]
+local
+typesafe-ivy-releases: http://10.67.158.52:21115/nexus/content/repositories/typesafe-ivy-releases/, [organization]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
+sbt-plugin-releases: http://10.67.158.52:21115/nexus/content/repositories/sbt-plugins/, [organisation]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
+maven-central: http://10.67.158.52:21115/nexus/content/groups/public

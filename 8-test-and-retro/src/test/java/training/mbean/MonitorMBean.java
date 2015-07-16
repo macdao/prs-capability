@@ -1,6 +1,6 @@
 package training.mbean;
 
-public interface TrainingMBean {
+public interface MonitorMBean {
     int getThroughput();
 
     int getRunning();

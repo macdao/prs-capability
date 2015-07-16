@@ -16,7 +16,6 @@ import static java.util.Arrays.asList;
 import static java.util.Arrays.copyOf;
 
 public class FizzGameMain {
-    public static List<GameRule> rules = Collections.synchronizedList(new ArrayList<GameRule>());
 
     public static void main(String[] args) throws Exception {
         if (isInvalidLength(args) || isInvalidSpecialNumber(args)) {
@@ -33,7 +32,6 @@ public class FizzGameMain {
 
         for (int i = 1; i <= 100; i++) {
             final CompositeGameRule compositeGameRule = new CompositeGameRule(rules);
-            FizzGameMain.rules.add(compositeGameRule);
             final String say = compositeGameRule.say(i).get();
             if (args.length == 4) {
                 fileWriter.write(say);

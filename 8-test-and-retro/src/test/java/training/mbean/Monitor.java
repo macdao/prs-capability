@@ -1,6 +1,6 @@
 package training.mbean;
 
-public class Training implements TrainingMBean {
+public class Monitor implements MonitorMBean {
 
     private int throughput;
     private int running;

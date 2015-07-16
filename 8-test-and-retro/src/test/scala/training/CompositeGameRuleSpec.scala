@@ -9,8 +9,8 @@ import org.scalatest.{Matchers, path}
 import scala.collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
 
-class StudentSpec extends path.FunSpec with Matchers with MockitoSugar {
-  describe("Student") {
+class CompositeGameRuleSpec extends path.FunSpec with Matchers with MockitoSugar {
+  describe("CompositeGameRule") {
     describe("当有两个规则") {
       it("并且第一个规则返回Fizz，则会返回Fizz") {
         val rule1 = mock[GameRule]

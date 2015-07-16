@@ -8,5 +8,6 @@ lazy val root = (project in file(".")).
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "com.github.stefanbirkner" % "system-rules" % "1.12.1" % "test",
     libraryDependencies += "org.mockito" % "mockito-core" % "1.10.19" % "test",
+    jacoco.settings,
     crossPaths := false
   )

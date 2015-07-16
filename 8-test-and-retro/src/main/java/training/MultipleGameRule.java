@@ -1,9 +1,11 @@
 package training;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.ImmutableList;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+
+import static com.google.common.base.Optional.of;
 
 public class MultipleGameRule implements GameRule {
 
@@ -13,37 +15,25 @@ public class MultipleGameRule implements GameRule {
         this.gameInput = gameInput;
     }
 
+    private static List<Optional<String>> cache = ImmutableList.of(Optional.<String>absent(),
+            of("Fizz"), of("Buzz"), of("FizzBuzz"), of("Whizz"), of("FizzWhizz"), of("BuzzWhizz"), of("FizzBuzzWhizz"));
+
     @Override
     public Optional<String> say(int index) {
-        final StringBuilder sb = new StringBuilder();
+        int flag = 0;
 
         if (index % gameInput.getNumber1() == 0) {
-            sb.append("Fizz");
+            flag += 0b1;
         }
 
         if (index % gameInput.getNumber2() == 0) {
-            sb.append("Buzz");
+            flag += 0b10;
         }
 
         if (index % gameInput.getNumber3() == 0) {
-            sb.append("Whizz");
+            flag += 0b100;
         }
 
-        if (sb.length() != 0) {
-            return getOf(sb.toString());
-        }
-
-        return Optional.absent();
-    }
-
-    private static final Map<String, Optional<String>> cache = new ConcurrentHashMap<>();
-
-    private Optional<String> getOf(String sb) {
-        if (cache.containsKey(sb)) {
-            return cache.get(sb);
-        }
-        final Optional<String> of = Optional.of(sb);
-        cache.put(sb, of);
-        return of;
+        return cache.get(flag);
     }
 }

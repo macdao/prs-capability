@@ -24,4 +24,9 @@ public class ContainGameRuleTest {
     public void student_1_should_mute() throws Exception {
         assertThat(containGameRule.say(1).isPresent(), is(false));
     }
+
+    @Test
+    public void student_33_should_say_FizzFizz() throws Exception {
+        assertThat(containGameRule.say(33).get(), is("FizzFizz"));
+    }
 }

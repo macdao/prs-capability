@@ -51,6 +51,10 @@ class FizzGameMainSpec extends path.FunSpec with Matchers {
         student(13) shouldBe "Fizz"
       }
 
+      it("student 33 should say FizzFizzFizz") {
+        student(33) shouldBe "FizzFizzFizz"
+      }
+
       ignore("all student should say correctly") {
         outputStream.toString.trim shouldBe
           """|1

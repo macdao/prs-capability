@@ -2,6 +2,8 @@ package training;
 
 import com.google.common.base.Optional;
 
+import static com.google.common.base.Strings.repeat;
+
 public class ContainGameRule implements GameRule {
     private final GameInput gameInput;
 
@@ -11,19 +13,23 @@ public class ContainGameRule implements GameRule {
 
     @Override
     public Optional<String> say(int index) {
-        if (isContains(index)) {
-            return Optional.of("Fizz");
+        int amount = contain(index);
+
+        if (amount == 0) {
+            return Optional.absent();
         }
-        return Optional.absent();
+
+        return Optional.of(repeat("Fizz", amount));
     }
 
-    private boolean isContains(int index) {
+    private int contain(int index) {
+        int count = 0;
         while (index > 0) {
             if (index % 10 == gameInput.getNumber1()) {
-                return true;
+                count++;
             }
             index = index / 10;
         }
-        return false;
+        return count;
     }
 }

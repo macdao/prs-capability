@@ -22,9 +22,6 @@ public class FizzGameMainPerformanceTest {
     public static void main(String[] args) throws Exception {
         registerMBean();
 
-        LongLiveObject longLiveObject = new LongLiveObject();
-        longLiveObject.start();
-
         warmUp();
 
         for (int i = 0; i < 2; i++) {
@@ -32,8 +29,6 @@ public class FizzGameMainPerformanceTest {
             runMain(count, threads);
             System.out.println(System.currentTimeMillis() - start);
         }
-
-        longLiveObject.stop();
     }
 
     private static void registerMBean() throws MalformedObjectNameException, InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException {

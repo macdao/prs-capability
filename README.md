@@ -67,6 +67,7 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-restful-apis.pdf)
 - [Markdown](.slides/huawei-restful-apis.md)
 
 ## [6. Performance 1](6-performance-1)
@@ -79,17 +80,19 @@
 
 ### Slides
 
+- [PDF](.slides/huawei-performance-1.pdf)
 - [Markdown](.slides/huawei-performance-1.md)
 
 ## [7. Performance 2](7-performance-2)
 
 ### Agenda
 
-- 介绍HotSpot VM基本架构、内存布局、性能调优方法
-- 练习利用JMC内存分析功能，调优应用程序和JVM性能
+- 介绍HotSpot VM基本架构、内存布局、性能泄露识别以及调优方法
+- 练习利用JMC内存分析功能，修复内存泄露、调优应用程序和JVM性能
 
 ### Slides
 
+- [PDF](.slides/huawei-performance-2.pdf)
 - [Markdown](.slides/huawei-performance-2.md)
 
 
